@@ -1,0 +1,34 @@
+<div class="{% pluralize resourceName %}-form">
+  <form @submit.prevent="onSubmit">
+    <div class="control">
+      <input type="text" placeholder="Name"
+        :class="{ input: true, 'is-danger': errors.name }"
+        v-model="fields.name"
+      >
+      <span class="help is-danger" v-for="message in errors.name">
+        Name {{message}}
+      </span>
+    </div>
+
+    <div class="control">
+      <input type="text" placeholder="Slug"
+        :class="{ input: true, 'is-danger': errors.slug }"
+        v-model="fields.slug"
+      >
+      <span class="help is-danger" v-for="message in errors.slug">
+        Slug {{message}}
+      </span>
+    </div>
+
+    <div class="control">
+      <button :class="{ button: true, 'is-primary': true, 'is-loading': {% resourceName %}IsLoading }" type="submit">
+        <template v-if="{% resourceName %}._id">
+          Update
+        </template>
+        <template v-else>
+          Add
+        </template>
+      </button>
+    </div>
+  </form>
+</div>

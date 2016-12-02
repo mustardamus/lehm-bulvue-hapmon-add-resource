@@ -1,0 +1,23 @@
+<div class="{% pluralize resourceName %}-show">
+  <template v-if="userIsAuthenticated">
+    <router-link class="button is-primary" :to="{ name: '{% pluralize resourceName %}-edit', params: { id: {% resourceName %}._id }}">
+      Edit
+    </router-link>
+
+    <a class="button is-danger" @click="onDeleteClick">
+      Delete
+    </a>
+  </template>
+
+  <div class="loading" v-if="{% resourceName %}IsLoading">
+    loading...
+  </div>
+
+  <div class="columns" v-if="!{% resourceName %}IsLoading">
+    <div class="column">
+      <h1 class="title">
+        {{{% resourceName %}.name}} ({{{% resourceName %}.slug}})
+      </h1>
+    </div>
+  </div>
+</div>

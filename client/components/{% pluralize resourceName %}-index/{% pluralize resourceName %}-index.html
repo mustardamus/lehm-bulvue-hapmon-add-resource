@@ -1,0 +1,13 @@
+<div class="{% pluralize resourceName %}-index">
+  <div class="loading" v-if="{% pluralize resourceName %}IsLoading">
+    loading...
+  </div>
+
+  <ul v-if="!{% pluralize resourceName %}IsLoading">
+    <li v-for="{% resourceName %} of {% pluralize resourceName %}">
+      <router-link class="title" :to="{ name: '{% pluralize resourceName %}-show', params: { slug: {% resourceName %}.slug }}">
+        {{{% resourceName %}.name}} ({{{% resourceName %}.slug}})
+      </router-link>
+    </li>
+  </ul>
+</div>
