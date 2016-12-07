@@ -10,5 +10,12 @@ module.exports = function (mongoose) {
     timestamps: true
   })
 
+  schema.set('toJSON', {
+    transform: (doc, obj, opt) => {
+      // delete obj.token -> remove fields you dont want to return to the client
+      return obj
+    }
+  })
+
   return mongoose.model(name, schema)
 }
