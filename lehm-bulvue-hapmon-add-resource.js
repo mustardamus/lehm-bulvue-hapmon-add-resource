@@ -4,7 +4,7 @@ module.exports = {
   name: 'Resource',
   delimiters: '{% %}',
 
-  after: function (srcPath, distPath, variables, utils) {
+  after ({ srcPath, distPath, variables, utils }) {
     let resourceSingular = variables.resourceName
     let resourcePlural = utils.Handlebars.transform(`{% pluralize "${resourceSingular}" %}`)
 
